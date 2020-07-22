@@ -1,2 +1,2 @@
 # Code-Quiz
-A Java Quiz
+A Javascript Quiz
