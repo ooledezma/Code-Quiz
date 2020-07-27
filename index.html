@@ -30,18 +30,16 @@
           <div class="col-4 pt-1">
             <a class="blog-header-logo text-dark" href="#">View High Scores</a>
           </div>
-          <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark">Time:</a>
-          </div>
+
           <div class="col-4 d-flex justify-content-end align-items-center">
-            <a class="blog-header-logo text-dark">Score:</a>
+            <a id="time" class="blog-header-logo text-dark score">Time: 0</a>
           </div>
         </div>
       </header>
 
       <!-- Main Screen -->
 
-      <div
+     <div
         id="mainScreen"
         class="jumbotron mt-5 mb-2 p-4 p-md-5 text-white rounded bg-dark"
       >
@@ -64,10 +62,9 @@
             Start
           </button>
         </div>
-      </div>
+      </div> 
 
       <!-- questionScreen -->
-
       <div
         id="questionScreen"
         class="jumbotron mt-5 mb-2 p-4 p-md-5 text-white rounded bg-dark hide"
@@ -94,7 +91,7 @@
             type="button"
             class="btn btn-outline-light btn-lg"
           ></button>
-          
+
           <button
             id="answer4btn"
             type="button"
@@ -102,15 +99,51 @@
           ></button>
         </div>
 
-        <div class="text-center">
-          <button
-            id="nextBtn"
-            type="button"
-            class="btn btn-outline-light btn-lg"
-          >
-            Next
-          </button>
+        <div id="response" class="blog-header-logo text-center"></div>
+      </div>
+
+      <!-- Final Score Screen -->
+
+      <div
+        id="finalscoreScreen"
+        class="jumbotron mt-5 mb-2 p-4 p-md-5 text-white rounded bg-dark hide"
+      >
+        <div class="col px-0">
+          <h1 class="display-4">All done!</h1>
         </div>
+
+        <p class="lead my-4">
+          Your final Score is: 20
+        </p>
+
+        <form>
+          <div class="form-row align-items-center">
+            <div class="col-auto">
+              <p class="lead mb-2 my-2">
+                Enter initials:
+              </p>
+            </div>
+
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInput">Name</label>
+              <input
+                type="text"
+                class="form-control mb-2 my-2"
+                id="inlineFormInput"
+                placeholder="Initials"
+              />
+            </div>
+
+            <div class="col-auto">
+              <button
+                type="submit"
+                class="btn btn-outline-light btn-lg mb-2 my-2"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
 
