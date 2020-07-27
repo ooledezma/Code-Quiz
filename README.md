@@ -1,7 +1,7 @@
 # Code-Quiz
 
 ### Links
-* [Password-Generator Website](https://ooledezma.github.io/Password-Generator/)
+* 
 
 ### Summary
 * Application for timed javascript code quiz with multiple-choice questions. This app will runs in the browser and feature dynamically updated HTML and CSS powered by JavaScript. It also feature a clean and polished user interface and is responsive to multiple screen sizes.
