@@ -31,64 +31,77 @@ var finalscoreScreenElement = document.getElementById("finalscoreScreen");
 //Grabs the final score Element to fill
 var scoreElement = document.getElementById("score");
 
-//Quiz Question Array
-var quizQuestions = [
-  {
-    question: "Question 1?",
-    choice1: "a",
-    choice2: "b",
-    choice3: "c",
-    choice4: "d",
-    correct: "a",
-  },
-  {
-    question: "Question 2?",
-    choice1: "e",
-    choice2: "f",
-    choice3: "g",
-    choice4: "h",
-    correct: "f",
-  },
-  {
-    question: "Question 3?",
-    choice1: "i",
-    choice2: "j",
-    choice3: "k",
-    choice4: "l",
-    correct: "k",
-  },
-  {
-    question: "Question 4?",
-    choice1: "m",
-    choice2: "n",
-    choice3: "o",
-    choice4: "p",
-    correct: "p",
-  },
-  {
-    question: "Question 5?",
-    choice1: "m",
-    choice2: "n",
-    choice3: "o",
-    choice4: "p",
-    correct: "p",
-  },
+//Grabs the Submit Button from the final Score Screen
+var submitButton = document.getElementById("submitBtn");
 
-  {
-    question: "Question 6?",
-    choice1: "m",
-    choice2: "n",
-    choice3: "o",
-    choice4: "p",
-    correct: "p",
-  },
-];
+//Grabs the display message element to fill
+var displayMessageElement = document.getElementById("displaymessage");
+
+//Grabs the go back Button from the high score page
+var goBackButton = document.getElementById("goBackbtn");
+
+//Grabs the clear High Score Button from the high score page
+var clearHighScoreButton = document.getElementById("clearhighScorebtn");
 
 //Initilizing Questions
 var questionIndex = 0;
 var secondsLeft = 60;
 
-//Pressing the start button, starts the quiz
+//Quiz Question Array
+var quizQuestions = [
+  {
+    question: "Which built-in method sorts the elements of an array?",
+    choice1: "changeOrder(order)",
+    choice2: "order()",
+    choice3: "sort()",
+    choice4: "random()",
+    correct: "sort()",
+  },
+  {
+    question: "Which of the following is the correct syntax to display “Oscar is Awesome” in an alert box using JavaScript?",
+    choice1: "alertbox(“Oscar is Awesome”)",
+    choice2: "msg(“Oscar is Awesome”)",
+    choice3: "msgbox(“Oscar is Awesome”)",
+    choice4: "alert(“Oscar is Awesome”)",
+    correct: "alert(“Oscar is Awesome”)",
+  },
+  {
+    question: "Which is the correct if statements to execute certain code if “x” is equal to 2?",
+    choice1: "if(x 2)",
+    choice2: "if(x = 2)",
+    choice3: "if(x == 2)",
+    choice4: "if(x != 2 )",
+    correct: "if(x == 2)",
+  },
+  {
+    question: "What is the syntax for creating a function in JavaScript named Help",
+    choice1: "function = Help()",
+    choice2: "function Help()",
+    choice3: "function := Help()",
+    choice4: "function : Help()",
+    correct: "function Help()",
+  },
+  {
+    question: "What is the JavaScript syntax for printing values in Console?",
+    choice1: "print(5)",
+    choice2: "console.log(5);",
+    choice3: "console.print(5);",
+    choice4: "print.console(5);",
+    correct: "console.log(5);",
+  },
+
+  {
+    question: "How to initialize an array in JavaScript?",
+    choice1: "var Oscar= “Oscar1”, “Oscar2”, “Oscar3”",
+    choice2: "var Oscar=(1:Oscar1, 2:Oscar2, 3:Oscar3)",
+    choice3: "var Oscar=(1=Oscar1, 2=Oscar2, 3=Oscar3)",
+    choice4: "var Oscar=[“Oscar1”, “Oscar2”, “Oscar3”]",
+    correct: "var Oscar=[“Oscar1”, “Oscar2”, “Oscar3”]",
+  },
+];
+
+//Checks to see if the start button was pressed, if so starts the quiz
+
 startButton.addEventListener("click", startQuiz);
 
 //Starts the quiz and hides the Start Screen
@@ -108,16 +121,18 @@ function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
     timeElement.textContent = "Time: " + secondsLeft;
+    console.log(secondsLeft)
 
-    if (secondsLeft === 0 || quizQuestions.length === questionIndex) {
+    if (
+      secondsLeft === 0 ||
+      quizQuestions.length === questionIndex
+    ) {
       clearInterval(timerInterval);
       finalScore();
     }
 
-    // if (secondsLeft <= 0) {
-    //   timerInterval = 0;
-    // }
   }, 1000);
+
 }
 
 //Checks if the answer buttons were clicked
@@ -126,7 +141,7 @@ answer2Button.addEventListener("click", checkAnswer);
 answer3Button.addEventListener("click", checkAnswer);
 answer4Button.addEventListener("click", checkAnswer);
 
-//Code for showing the next question as well as the choices
+//Code for showing the questions as well as the choices
 
 function question() {
   questionElement.textContent = quizQuestions[questionIndex].question;
@@ -156,7 +171,7 @@ function question() {
   );
 }
 
-//Code to check the correct answer
+//Code to check if the correct answer was pressed
 function checkAnswer() {
   var answer = quizQuestions[questionIndex].correct;
 
@@ -172,9 +187,31 @@ function checkAnswer() {
   }
 }
 
-//Code to check the correct answer
+//Code to go to the final score screen
 function finalScore() {
   questionScreenElement.classList.add("hide");
   finalscoreScreenElement.classList.remove("hide");
   scoreElement.textContent = "Your Final Score is: " + secondsLeft;
 }
+
+//Checks to see if the submit button was clicked on the final score page and saves score
+submitButton.addEventListener("click", function () {
+  //Grabs the highscore element for initials
+  var userInitials = document.getElementById("inlineFormInput").value.trim();
+
+  //Grabs the socre
+  var userScore = { initials: userInitials, score: secondsLeft };
+  var userHighScoreElement = document.getElementById("userHighScoreList");
+
+  if (userInitials === "") {
+    displayMessageElement.textContent = "Initials cannot be blank!";
+  } else {
+    localStorage.setItem("userScore", JSON.stringify(userScore));
+    location.href = "highscore.html";
+  }
+
+  var lastUser = JSON.parse(localStorage.getItem("userScore"));
+  console.log(lastUser);
+
+  userHighScoreElement.textContent = lastUser.initials;
+});
