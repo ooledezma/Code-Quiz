@@ -25,6 +25,12 @@ var answer4Button = document.getElementById("answer4btn");
 //Grabs the response Element to fill
 var responseElement = document.getElementById("response");
 
+//Grabs the final score screen
+var finalscoreScreenElement = document.getElementById("finalscoreScreen");
+
+//Grabs the final score Element to fill
+var scoreElement = document.getElementById("score");
+
 //Quiz Question Array
 var quizQuestions = [
   {
@@ -93,9 +99,11 @@ function startQuiz() {
   mainScreenElement.classList.add("hide");
   questionScreenElement.classList.remove("hide");
 
-  Question();
+  question();
 }
+
 //Starts timing the quiz
+
 function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
@@ -103,6 +111,7 @@ function setTime() {
 
     if (secondsLeft === 0 || quizQuestions.length === questionIndex) {
       clearInterval(timerInterval);
+      finalScore();
     }
 
     // if (secondsLeft <= 0) {
@@ -119,7 +128,7 @@ answer4Button.addEventListener("click", checkAnswer);
 
 //Code for showing the next question as well as the choices
 
-function Question() {
+function question() {
   questionElement.textContent = quizQuestions[questionIndex].question;
 
   answer1Button.textContent = quizQuestions[questionIndex].choice1;
@@ -154,11 +163,18 @@ function checkAnswer() {
   if (answer === event.target.getAttribute("data-answer")) {
     responseElement.textContent = "Correct!";
     questionIndex++;
-    Question();
+    question();
   } else {
     secondsLeft = secondsLeft - 10;
     responseElement.textContent = "Wrong!";
     questionIndex++;
-    Question();
+    question();
   }
+}
+
+//Code to check the correct answer
+function finalScore() {
+  questionScreenElement.classList.add("hide");
+  finalscoreScreenElement.classList.remove("hide");
+  scoreElement.textContent = "Your Final Score is: " + secondsLeft;
 }
