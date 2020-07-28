@@ -1,17 +1,20 @@
 # Code-Quiz
 
 ### Links
-* [Password-Generator Website](https://ooledezma.github.io/Password-Generator/)
+
+-
 
 ### Summary
-* Application for timed javascript code quiz with multiple-choice questions. This app will runs in the browser and feature dynamically updated HTML and CSS powered by JavaScript. It also feature a clean and polished user interface and is responsive to multiple screen sizes.
+
+- Application for timed javascript code quiz with multiple-choice questions. This app will runs in the browser and feature dynamically updated HTML and CSS powered by JavaScript. It also feature a clean and polished user interface and is responsive to multiple screen sizes.
 
 ### How to Use
-* The User must click the start button to start the quiz. 
-* The User will have one minutes to complete the quiz.
 
+- The User must click the start button to start the quiz.
+- The User will have one minutes to complete the quiz.
 
 ## PseudoCode
+
 ```
 * create a NavBar with Time and
 GIVEN I am taking a code quiz
