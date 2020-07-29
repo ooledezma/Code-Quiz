@@ -2,7 +2,8 @@
 
 ### Links
 
-- ooledezma.github.io/code-quiz/
+- [JaveScript Quiz!](ooledezma.github.io/code-quiz/)
+
 
 ### Description
 
@@ -14,5 +15,3 @@
 - The User will need to answer a total of six questions within 60 seconds.
 - If the User answers a question wrong 10 seconds will be deducted from the time.
 - If the quiz will automatically end if the timer reaches 0 or if the user finishes answering the questions.
-
-### ScreenShots
