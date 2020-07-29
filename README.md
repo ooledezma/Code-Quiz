@@ -2,11 +2,12 @@
 
 ### Links
 
-- ooledezma.github.io/code-quiz/
+- [JaveScript Quiz!](ooledezma.github.io/code-quiz/)
+
 
 ### Description
 
--Application for timed javascript code quiz with multiple-choice questions. This app will runs in the browser and feature dynamically updated HTML and CSS powered by JavaScript. It also feature a clean and polished user interface and is responsive to multiple screen sizes.
+Application for timed javascript code quiz with multiple-choice questions. This app will runs in the browser and feature dynamically updated HTML and CSS powered by JavaScript. It also feature a clean and polished user interface and is responsive to multiple screen sizes.
 
 ### How to Use
 
@@ -14,5 +15,3 @@
 - The User will need to answer a total of six questions within 60 seconds.
 - If the User answers a question wrong 10 seconds will be deducted from the time.
 - If the quiz will automatically end if the timer reaches 0 or if the user finishes answering the questions.
-
-### ScreenShots
