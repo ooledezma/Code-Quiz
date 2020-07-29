@@ -122,17 +122,17 @@ function startQuiz() {
 
 function setTime() {
   var timerInterval = setInterval(function () {
+   
     secondsLeft--;
+
     timeElement.textContent = "Time: " + secondsLeft;
-    console.log(secondsLeft);
+
+    console.log(timerInterval);
 
     if (secondsLeft <= 0 || quizQuestions.length === questionIndex) {
-      finalScore()
-      secondsLeft = 0
-      timeElement.textContent = "Time: 0" ;
+      finalScore();
       clearInterval(timerInterval);
-     
-     
+  
     }
   }, 1000);
 }
@@ -146,38 +146,34 @@ answer4Button.addEventListener("click", checkAnswer);
 //Code for showing the questions as well as the choices
 
 function question() {
-
   if (quizQuestions.length != questionIndex) {
-    
-  questionElement.textContent = quizQuestions[questionIndex].question;
+    questionElement.textContent = quizQuestions[questionIndex].question;
 
-  answer1Button.textContent = quizQuestions[questionIndex].choice1;
-  answer1Button.setAttribute(
-    "data-answer",
-    quizQuestions[questionIndex].choice1
-  );
+    answer1Button.textContent = quizQuestions[questionIndex].choice1;
+    answer1Button.setAttribute(
+      "data-answer",
+      quizQuestions[questionIndex].choice1
+    );
 
-  answer2Button.textContent = quizQuestions[questionIndex].choice2;
-  answer2Button.setAttribute(
-    "data-answer",
-    quizQuestions[questionIndex].choice2
-  );
+    answer2Button.textContent = quizQuestions[questionIndex].choice2;
+    answer2Button.setAttribute(
+      "data-answer",
+      quizQuestions[questionIndex].choice2
+    );
 
-  answer3Button.textContent = quizQuestions[questionIndex].choice3;
-  answer3Button.setAttribute(
-    "data-answer",
-    quizQuestions[questionIndex].choice3
-  );
+    answer3Button.textContent = quizQuestions[questionIndex].choice3;
+    answer3Button.setAttribute(
+      "data-answer",
+      quizQuestions[questionIndex].choice3
+    );
 
-  answer4Button.textContent = quizQuestions[questionIndex].choice4;
-  answer4Button.setAttribute(
-    "data-answer",
-    quizQuestions[questionIndex].choice4
-  );
-
-   } else { 
-      finalScore()
-
+    answer4Button.textContent = quizQuestions[questionIndex].choice4;
+    answer4Button.setAttribute(
+      "data-answer",
+      quizQuestions[questionIndex].choice4
+    );
+  } else {
+    finalScore();
   }
 }
 
@@ -198,15 +194,16 @@ function checkAnswer() {
 }
 
 //Code to go to the final score screen
-function finalScore() {
+function finalScore(event) {
   questionScreenElement.classList.add("hide");
   finalscoreScreenElement.classList.remove("hide");
   scoreElement.textContent = "Your Final Score is: " + secondsLeft;
 }
 
 //Checks to see if the submit button was clicked on the final score page and saves score
-submitButton.addEventListener("click", function () {
+submitButton.addEventListener("click", function (event) {
   //Grabs the highscore element for initials
+
   var userInitials = document.getElementById("inlineFormInput").value.trim();
 
   //Grabs the socre
@@ -217,7 +214,8 @@ submitButton.addEventListener("click", function () {
   } else {
     localStorage.setItem("userScore", JSON.stringify(userScore));
 
-     location.href = "highscore.html";
+    location.href = "highscore.html";
   }
-});
 
+  event.preventDefault();
+});
