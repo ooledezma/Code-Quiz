@@ -37,12 +37,6 @@ var submitButton = document.getElementById("submitBtn");
 //Grabs the display message element to fill
 var displayMessageElement = document.getElementById("displaymessage");
 
-//Grabs the go back Button from the high score page
-var goBackButton = document.getElementById("goBackbtn");
-
-//Grabs the clear High Score Button from the high score page
-var clearHighScoreButton = document.getElementById("clearhighScorebtn");
-
 //Initilizing Questions
 var questionIndex = 0;
 var secondsLeft = 60;
@@ -118,21 +112,23 @@ function startQuiz() {
   question();
 }
 
-//Starts timing the quiz
 
+//Start timing the quiz
 function setTime() {
   var timerInterval = setInterval(function () {
-   
     secondsLeft--;
 
     timeElement.textContent = "Time: " + secondsLeft;
 
-    console.log(timerInterval);
+    //This code makes your score 0 if time goes negative.
+    if (secondsLeft <= 0) {
+      secondsLeft = 0;
+      timeElement.textContent = "Time: " + secondsLeft;
+    }
 
     if (secondsLeft <= 0 || quizQuestions.length === questionIndex) {
       finalScore();
       clearInterval(timerInterval);
-  
     }
   }, 1000);
 }
@@ -201,7 +197,7 @@ function finalScore(event) {
 }
 
 //Checks to see if the submit button was clicked on the final score page and saves score
-submitButton.addEventListener("click", function (event) {
+submitButton.addEventListener("click", function () {
   //Grabs the highscore element for initials
 
   var userInitials = document.getElementById("inlineFormInput").value.trim();
@@ -216,6 +212,6 @@ submitButton.addEventListener("click", function (event) {
 
     location.href = "highscore.html";
   }
-
-  event.preventDefault();
 });
+
+
