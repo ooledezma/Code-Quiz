@@ -58,7 +58,8 @@ var quizQuestions = [
     correct: "sort()",
   },
   {
-    question: "Which of the following is the correct syntax to display “Oscar is Awesome” in an alert box using JavaScript?",
+    question:
+      "Which of the following is the correct syntax to display “Oscar is Awesome” in an alert box using JavaScript?",
     choice1: "alertbox(“Oscar is Awesome”)",
     choice2: "msg(“Oscar is Awesome”)",
     choice3: "msgbox(“Oscar is Awesome”)",
@@ -66,7 +67,8 @@ var quizQuestions = [
     correct: "alert(“Oscar is Awesome”)",
   },
   {
-    question: "Which is the correct if statements to execute certain code if “x” is equal to 2?",
+    question:
+      "Which is the correct if statements to execute certain code if “x” is equal to 2?",
     choice1: "if(x 2)",
     choice2: "if(x = 2)",
     choice3: "if(x == 2)",
@@ -74,7 +76,8 @@ var quizQuestions = [
     correct: "if(x == 2)",
   },
   {
-    question: "What is the syntax for creating a function in JavaScript named Help",
+    question:
+      "What is the syntax for creating a function in JavaScript named Help",
     choice1: "function = Help()",
     choice2: "function Help()",
     choice3: "function := Help()",
@@ -121,18 +124,17 @@ function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
     timeElement.textContent = "Time: " + secondsLeft;
-    console.log(secondsLeft)
+    console.log(secondsLeft);
 
-    if (
-      secondsLeft === 0 ||
-      quizQuestions.length === questionIndex
-    ) {
+    if (secondsLeft <= 0 || quizQuestions.length === questionIndex) {
+      finalScore()
+      secondsLeft = 0
+      timeElement.textContent = "Time: 0" ;
       clearInterval(timerInterval);
-      finalScore();
+     
+     
     }
-
   }, 1000);
-
 }
 
 //Checks if the answer buttons were clicked
@@ -144,6 +146,9 @@ answer4Button.addEventListener("click", checkAnswer);
 //Code for showing the questions as well as the choices
 
 function question() {
+
+  if (quizQuestions.length != questionIndex) {
+    
   questionElement.textContent = quizQuestions[questionIndex].question;
 
   answer1Button.textContent = quizQuestions[questionIndex].choice1;
@@ -169,6 +174,11 @@ function question() {
     "data-answer",
     quizQuestions[questionIndex].choice4
   );
+
+   } else { 
+      finalScore()
+
+  }
 }
 
 //Code to check if the correct answer was pressed
@@ -201,17 +211,13 @@ submitButton.addEventListener("click", function () {
 
   //Grabs the socre
   var userScore = { initials: userInitials, score: secondsLeft };
-  var userHighScoreElement = document.getElementById("userHighScoreList");
 
   if (userInitials === "") {
     displayMessageElement.textContent = "Initials cannot be blank!";
   } else {
     localStorage.setItem("userScore", JSON.stringify(userScore));
-    location.href = "highscore.html";
+
+     location.href = "highscore.html";
   }
-
-  var lastUser = JSON.parse(localStorage.getItem("userScore"));
-  console.log(lastUser);
-
-  userHighScoreElement.textContent = lastUser.initials;
 });
+
