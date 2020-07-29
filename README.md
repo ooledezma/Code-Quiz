@@ -2,7 +2,7 @@
 
 ### Links
 
-- [JaveScript Quiz!](ooledezma.github.io/code-quiz/)
+- ooledezma.github.io/code-quiz/
 
 
 ### Description
