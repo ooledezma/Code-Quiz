@@ -112,7 +112,6 @@ function startQuiz() {
   question();
 }
 
-
 //Start timing the quiz
 function setTime() {
   var timerInterval = setInterval(function () {
@@ -210,8 +209,6 @@ submitButton.addEventListener("click", function () {
   } else {
     localStorage.setItem("userScore", JSON.stringify(userScore));
 
-    location.href = "highscore.html";
+    location.href = "Highscore.html";
   }
 });
-
-
