@@ -2,7 +2,7 @@
 
 ### Links
 
-- ooledezma.github.io/code-quiz/
+- https://ooledezma.github.io/code-quiz/
 
 
 ### Description
